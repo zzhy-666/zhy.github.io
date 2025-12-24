@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>学习 - 大学生岗位胜任力提升平台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <main class="max-w-4xl mx-auto p-6">
+    <a href="courses.html" class="text-sm text-blue-600 hover:underline">← 返回课程中心</a>
+    <div id="content" class="mt-6 bg-white rounded-xl border border-slate-200 p-6">
+      <h2 id="courseTitle" class="text-xl font-semibold">加载中…</h2>
+      <p id="courseDesc" class="text-sm text-slate-600 mt-2">如果您未登录，将自动跳转到登录页面。</p>
+      <div id="startArea" class="mt-6"></div>
+    </div>
+  </main>
+
+  <script>
+    // course list must match courses.html order
+    const courses = [
+      'Python数据分析','Excel数据透视表','PS修图','短视频剪辑','PPT动画制作','微信公众号排版','手机摄影','简历制作','思维导图制作','淘宝店铺装修','直播带货话术','小红书运营','抖音运营','社群运营','电商客服技巧','网络爬虫','微信小程序开发','3D建模','插画设计','视频调色','配音技巧','手绘板绘','数据分析报告撰写','自动化办公','网站搭建','产品原型设计','网络推广','视频字幕制作'
+    ];
+
+    function qs(name){
+      const params = new URLSearchParams(location.search);
+      return params.get(name);
+    }
+
+    const id = parseInt(qs('id')||'0',10);
+    const isAuth = sessionStorage.getItem('uni_auth')==='true' || localStorage.getItem('uni_auth')==='true';
+
+    if(!isAuth){
+      // redirect to login with returnTo
+      const returnTo = encodeURIComponent(location.href);
+      location.href = 'login.html?return=' + returnTo;
+    } else {
+      const title = courses[id-1] || '课程信息';
+      document.getElementById('courseTitle').textContent = title;
+      document.getElementById('courseDesc').textContent = '这里是课程 "' + title + '" 的学习页面占位，后续可以嵌入视频/文章/章节列表。';
+      const startArea = document.getElementById('startArea');
+      startArea.innerHTML = '<a href="#" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg">开始学习</a>';
+    }
+  </script>
+</body>
+</html>

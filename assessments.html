@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>能力测评 - 大学生岗位胜任力提升平台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <main class="max-w-4xl mx-auto p-6">
+    <a href="generated-page.html" class="text-sm text-blue-600 hover:underline">← 返回主页</a>
+    <div class="mt-6 bg-white rounded-xl border border-slate-200 p-6">
+      <h1 class="text-2xl font-semibold">能力测评</h1>
+      <p class="text-sm text-slate-500 mt-2">开始测评以获得技能报告与课程建议。</p>
+
+      <div id="statusArea" class="mt-6"></div>
+
+      <div class="mt-6">
+        <button id="startBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg">开始测评</button>
+        <button id="viewReport" class="ml-3 bg-white border border-slate-200 px-4 py-2 rounded-lg">查看历史报告</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const reportKey = 'uni_assessment_result';
+    const statusArea = document.getElementById('statusArea');
+
+    function renderStatus(){
+      const r = localStorage.getItem(reportKey);
+      if(r){
+        const obj = JSON.parse(r);
+        statusArea.innerHTML = `<div class="p-4 bg-green-50 border border-green-100 rounded-lg">
+          <div class="font-medium">上次测评成绩：${obj.score} 分</div>
+          <div class="text-sm text-slate-500 mt-1">完成于：${new Date(obj.t).toLocaleString()}</div>
+          <div class="text-sm text-slate-600 mt-2">建议：${obj.suggestion}</div>
+        </div>`;
+      } else {
+        statusArea.innerHTML = '<p class="text-sm text-slate-500">您尚未参加测评。</p>';
+      }
+    }
+
+    document.getElementById('startBtn').addEventListener('click', ()=>{
+      const isAuth = sessionStorage.getItem('uni_auth')==='true' || localStorage.getItem('uni_auth')==='true';
+      if(!isAuth){
+        const returnTo = encodeURIComponent(location.href);
+        location.href = 'login.html?return=' + returnTo;
+        return;
+      }
+      // simulate test
+      const btn = document.getElementById('startBtn');
+      btn.disabled = true; btn.textContent = '测评进行中...';
+      setTimeout(()=>{
+        const score = Math.floor(Math.random()*41)+60; // 60-100
+        const suggestion = score >= 85 ? '继续保持，挑战高阶课程' : score >=70 ? '建议补强核心技能，选修相关课程' : '建议从基础课程开始学习并参加训练营';
+        const data = {score, suggestion, t: Date.now()};
+        localStorage.setItem(reportKey, JSON.stringify(data));
+        btn.disabled = false; btn.textContent = '开始测评';
+        renderStatus();
+        alert('测评完成，得分：' + score + ' 分（模拟）');
+      }, 1500);
+    });
+
+    document.getElementById('viewReport').addEventListener('click', ()=>{
+      const r = localStorage.getItem(reportKey);
+      if(!r){ alert('暂无历史报告。'); return; }
+      const obj = JSON.parse(r);
+      alert('历史报告（模拟）\n得分：' + obj.score + '\n建议：' + obj.suggestion + '\n完成时间：' + new Date(obj.t).toLocaleString());
+    });
+
+    renderStatus();
+  </script>
+</body>
+</html>

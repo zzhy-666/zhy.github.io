@@ -1,0 +1,1877 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大学生岗位胜任力提升平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Hide Scrollbar for horizontal scrolling areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Custom Checkbox/Radio */
+        .custom-checkbox:checked {
+            background-color: #2563EB;
+            border-color: #2563EB;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+        }
+        
+        /* Smooth fade for tabs */
+        .tab-content {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* 保证各 tab 下课程卡片图片高度一致 */
+        @media (min-width: 640px) {
+            .grid.md\:grid-cols-2 .relative > img,
+            .grid .relative > img {
+                height: 10rem !important; /* 与 h-40 等价 */
+                object-fit: cover !important;
+                width: 100% !important;
+                display: block !important;
+            }
+            /* 额外规则，覆盖推荐面板和单列卡片的图片尺寸 */
+            .group.block .relative > img,
+            .relative.h-40 > img {
+                height: 10rem !important;
+                object-fit: cover !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900 overflow-hidden flex h-screen">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-white border-r border-slate-200 hidden md:flex flex-col z-20">
+        <div class="h-16 flex items-center px-6 border-b border-slate-100">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-lg mr-3 shadow-lg shadow-blue-600/20">
+                U
+            </div>
+            <span class="font-bold text-lg tracking-tight text-slate-900">大学生岗位胜任力提升平台</span>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-1">
+            <div class="px-2 mb-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">平台功能</div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 bg-blue-50 text-blue-700 rounded-lg group transition-all">
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                <span class="font-medium text-sm">主页</span>
+            </a>
+            <a href="courses.html" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg group transition-all">
+                <i data-lucide="book-open" class="w-5 h-5 group-hover:text-blue-600 transition-colors"></i>
+                <span class="font-medium text-sm">课程中心</span>
+            </a>
+            <a href="careers.html" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg group transition-all">
+                <i data-lucide="briefcase" class="w-5 h-5 group-hover:text-blue-600 transition-colors"></i>
+                <span class="font-medium text-sm">职位库</span>
+            </a>
+            <a href="assessments.html" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg group transition-all">
+                <i data-lucide="target" class="w-5 h-5 group-hover:text-blue-600 transition-colors"></i>
+                <span class="font-medium text-sm">能力测评</span>
+            </a>
+            <a href="community.html" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg group transition-all">
+                <i data-lucide="messages-square" class="w-5 h-5 group-hover:text-blue-600 transition-colors"></i>
+                <span class="font-medium text-sm">社区</span>
+            </a>
+
+            <div class="px-2 mt-8 mb-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">个人中心</div>
+            <a href="login.html" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg group transition-all">
+                <i data-lucide="user-circle" class="w-5 h-5 group-hover:text-blue-600 transition-colors"></i>
+                <span class="font-medium text-sm">我的档案</span>
+            </a>
+            <a href="favorites.html" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg group transition-all">
+                <i data-lucide="bookmark" class="w-5 h-5 group-hover:text-blue-600 transition-colors"></i>
+                <span class="font-medium text-sm">收藏职位</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-slate-100">
+            <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-semibold text-slate-500">档案完善度</span>
+                    <span class="text-xs font-bold text-blue-600">85%</span>
+                </div>
+                <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col relative overflow-hidden">
+        
+        <!-- Top Sticky Navigation -->
+        <header class="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-30">
+            <div class="flex items-center gap-4 md:hidden">
+                <button class="text-slate-500 hover:text-slate-900">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <span class="font-bold text-lg text-slate-900">大学生岗位胜任力提升平台</span>
+            </div>
+
+            <!-- Search -->
+                <div class="hidden md:flex relative max-w-md w-full">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                <input id="globalSearchInput" type="text" placeholder="搜索课程、职位或技能..." class="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-blue-100 focus:bg-white transition-all outline-none placeholder:text-slate-400">
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-5">
+                <button class="relative text-slate-500 hover:text-slate-900 transition-colors">
+                    <i data-lucide="bell" class="w-5 h-5"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+                <div class="h-8 w-[1px] bg-slate-200"></div>
+                <div class="flex items-center gap-3 cursor-pointer group" id="topUserBlock">
+                    <div class="text-right hidden sm:block" id="topUserNameContainer">
+                        <!-- 动态用户名，未登录时显示登录链接 -->
+                        <a id="topUserName" href="login.html" class="text-sm font-semibold text-slate-900 leading-none hover:text-blue-600 transition-colors">登录</a>
+                        <p id="topUserSub" class="text-xs text-slate-500 mt-1"></p>
+                    </div>
+                    <img id="topUserAvatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&amp;w=100&amp;auto=format&amp;fit=crop" alt="User" class="w-9 h-9 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+            </div>
+        </header>
+
+        <!-- Scrollable Dashboard Content -->
+        <div class="flex-1 overflow-y-auto bg-slate-50 scroll-smooth pb-10">
+            <div class="max-w-7xl mx-auto p-6 space-y-8">
+
+                <!-- Hero Section: Dashboard Greeting -->
+                <section class="grid lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-8 bg-white rounded-2xl p-8 border border-slate-200 shadow-sm relative overflow-hidden flex flex-col justify-center">
+                        <div class="relative z-10 max-w-lg">
+                            <h1 class="text-3xl font-semibold text-slate-900 tracking-tight mb-3">
+                                准备好开启你的职业生涯了吗，<span id="greetName">同学</span>？
+                            </h1>
+                            <p class="text-slate-500 mb-6 leading-relaxed">
+                                <span class="text-blue-600">本周你的职场竞争力提升了</span> <span class="text-blue-600 font-medium">12%</span>。<span class="text-blue-600">根据你的技能缺口，查看为你推荐的新课程。</span>
+                            </p>
+                            <div class="flex gap-3">
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-lg shadow-blue-600/20">
+                                    开始测评
+                                </button>
+                                <button class="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">
+                                    查看报告
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Abstract Illustration Background -->
+                        <div class="absolute right-0 top-0 h-full w-1/3 opacity-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-600 via-sky-400 to-indigo-100 pointer-events-none"></div>
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="absolute -right-10 bottom-0 h-4/5 object-contain opacity-90 mix-blend-multiply hidden md:block" alt="Student Success">
+                    </div>
+
+                    <!-- Role Cards / Quick Actions -->
+                    <div class="lg:col-span-4 grid grid-rows-3 gap-4">
+                        <a href="courses.html" class="block bg-indigo-50 rounded-xl p-4 border border-indigo-100 flex items-center justify-between hover:shadow-md transition-shadow group">
+                            <div>
+                                <h3 class="font-semibold text-indigo-900 group-hover:text-indigo-700">我是学习者</h3>
+                                <p class="text-xs text-indigo-600 mt-0.5">探索 500+ 门好课</p>
+                            </div>
+                            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-indigo-600">
+                                <i data-lucide="book" class="w-5 h-5"></i>
+                            </div>
+                        </a>
+                        <a href="careers.html" class="block bg-emerald-50 rounded-xl p-4 border border-emerald-100 flex items-center justify-between hover:shadow-md transition-shadow group">
+                            <div>
+                                <h3 class="font-semibold text-emerald-900 group-hover:text-emerald-700">我是求职者</h3>
+                                <p class="text-xs text-emerald-600 mt-0.5">浏览 2.5k+ 热门岗位</p>
+                            </div>
+                            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-emerald-600">
+                                <i data-lucide="search-check" class="w-5 h-5"></i>
+                            </div>
+                        </a>
+                        <div class="bg-orange-50 rounded-xl p-4 border border-orange-100 flex items-center justify-between cursor-pointer hover:shadow-md transition-shadow group">
+                            <div>
+                                <h3 class="font-semibold text-orange-900 group-hover:text-orange-700">企业招聘</h3>
+                                <p class="text-xs text-orange-600 mt-0.5">发布全职与实习机会</p>
+                            </div>
+                            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-orange-600">
+                                <i data-lucide="building-2" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Feature Carousel / Functional Modules -->
+                <section>
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold tracking-tight text-slate-900">成长工具箱</h2>
+                        <div class="flex gap-2">
+                            <button class="p-2 rounded-full border border-slate-200 hover:bg-white text-slate-500"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                            <button class="p-2 rounded-full border border-slate-200 hover:bg-white text-slate-500"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 overflow-x-auto pb-4 no-scrollbar snap-x">
+                        <!-- Card 1: Curriculum -->
+                        <div class="min-w-[280px] md:min-w-[320px] bg-white rounded-xl border border-slate-200 p-5 snap-start hover:border-blue-300 transition-colors">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-4">
+                                <i data-lucide="layers" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg mb-1">课程体系</h3>
+                            <p class="text-sm text-slate-500 mb-4">全栈开发结构化学习路径。</p>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full mb-2 overflow-hidden">
+                                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 60%"></div>
+                            </div>
+                            <span class="text-xs text-slate-400 font-medium">3 个模块进行中</span>
+                        </div>
+                         <!-- Card 2: Assessment -->
+                         <div class="min-w-[280px] md:min-w-[320px] bg-white rounded-xl border border-slate-200 p-5 snap-start hover:border-purple-300 transition-colors">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mb-4">
+                                <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg mb-1">智能测评</h3>
+                            <p class="text-sm text-slate-500 mb-4">AI 驱动的技能缺口分析与测试。</p>
+                            <div class="flex items-center gap-2 mt-auto">
+                                <span class="bg-purple-50 text-purple-700 text-xs px-2 py-1 rounded font-medium">有新测试可用</span>
+                            </div>
+                        </div>
+                         <!-- Card 3: Database -->
+                         <div class="min-w-[280px] md:min-w-[320px] bg-white rounded-xl border border-slate-200 p-5 snap-start hover:border-emerald-300 transition-colors">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 mb-4">
+                                <i data-lucide="database" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg mb-1">行业数据库</h3>
+                            <p class="text-sm text-slate-500 mb-4">薪资与人才需求的实时市场数据。</p>
+                             <div class="flex -space-x-2 overflow-hidden mt-1">
+                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100" alt="">
+                                <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100" alt="">
+                                <span class="h-6 w-6 rounded-full bg-slate-100 ring-2 ring-white flex items-center justify-center text-[10px] font-medium text-slate-500">+4k</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Course Hub -->
+                <section id="courses" class="scroll-mt-20">
+                    <div class="sticky top-0 z-10 bg-slate-50/95 backdrop-blur py-4 mb-4 border-b border-slate-200 flex items-center gap-6 overflow-x-auto no-scrollbar" role="tablist">
+                        <button data-tab="recommended" class="tab-btn text-sm font-semibold text-blue-600 border-b-2 border-blue-600 pb-4 whitespace-nowrap">推荐</button>
+                        <button data-tab="it" class="tab-btn text-sm font-medium text-slate-500 hover:text-slate-900 pb-4 whitespace-nowrap transition-colors">IT与互联网</button>
+                        <button data-tab="design" class="tab-btn text-sm font-medium text-slate-500 hover:text-slate-900 pb-4 whitespace-nowrap transition-colors">创意设计</button>
+                        <button data-tab="language" class="tab-btn text-sm font-medium text-slate-500 hover:text-slate-900 pb-4 whitespace-nowrap transition-colors">语言学习</button>
+                        <button data-tab="finance" class="tab-btn text-sm font-medium text-slate-500 hover:text-slate-900 pb-4 whitespace-nowrap transition-colors">金融商科</button>
+                    </div>
+
+                    <div class="mb-6">
+                        <!-- Tab Panels -->
+                        <div id="courses-panels">
+                            <!-- Recommended Panel -->
+                            <div data-panel="recommended">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                                    <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                                    Python 编程与数据科学
+                                </h3>
+                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    <!-- Course Card 1 (clickable linking to Bilibili video) -->
+                                    <a href="https://www.bilibili.com/video/BV1aQ4y1Z7hK/?spm_id_from=333.337.search-card.all.click&vd_source=31b2c65b3e6b1bfeb998d49fdbde7287" target="_blank" rel="noopener noreferrer" class="group block bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-300 transition-all duration-300 flex flex-col h-full">
+                                        <div class="relative h-40 overflow-hidden">
+                                            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+                                            <span class="absolute top-3 left-3 bg-pink-500/90 text-white text-[10px] font-bold px-2 py-1 rounded backdrop-blur-sm">BILIBILI</span>
+                                        </div>
+                                        <div class="p-4 flex-1 flex flex-col">
+                                            <h4 class="font-semibold text-slate-900 line-clamp-2 mb-2 group-hover:text-blue-600 transition-colors">Python 训练营：从零到精通</h4>
+                                            <div class="mt-auto flex items-center justify-between text-xs text-slate-500">
+                                                <div class="flex items-center gap-1">
+                                                    <i data-lucide="clock" class="w-3 h-3"></i> 22小时 30分
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <i data-lucide="bar-chart" class="w-3 h-3"></i> 入门
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Course Card 2 (clickable linking to Bilibili video) -->
+                                    <a href="https://www.bilibili.com/video/BV1D9GLzyEL6/?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener noreferrer" class="group block bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-300 transition-all duration-300 flex flex-col h-full">
+                                        <div class="relative h-40 overflow-hidden">
+                                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+                                            <span class="absolute top-3 left-3 bg-blue-600/90 text-white text-[10px] font-bold px-2 py-1 rounded backdrop-blur-sm">COURSERA</span>
+                                        </div>
+                                        <div class="p-4 flex-1 flex flex-col">
+                                            <h4 class="font-semibold text-slate-900 line-clamp-2 mb-2 group-hover:text-blue-600 transition-colors">Pandas 与 NumPy 数据分析实战</h4>
+                                            <div class="mt-auto flex items-center justify-between text-xs text-slate-500">
+                                                <div class="flex items-center gap-1">
+                                                    <i data-lucide="clock" class="w-3 h-3"></i> 14小时 15分
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <i data-lucide="bar-chart" class="w-3 h-3"></i> 进阶
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- IT Panel -->
+                            <div data-panel="it" class="hidden">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                                    <span class="w-1.5 h-6 bg-sky-500 rounded-full"></span>
+                                    IT 与互联网 热门课程
+                                </h3>
+                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    <a href="https://www.bilibili.com/video/BV1FV4y157Zx/?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5 snap-start hover:border-blue-300 transition-colors">
+                                        <div class="relative h-40 overflow-hidden mb-4">
+                                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-40 object-cover">
+                                        </div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">前端工程师实战</h4>
+                                        <p class="text-xs text-slate-500">React + TypeScript 项目实战</p>
+                                    </div>
+                                    </a>
+                                    <a href="https://www.bilibili.com/video/BV1MT411x7GH/?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5 snap-start hover:border-blue-300 transition-colors">
+                                        <div class="relative h-40 overflow-hidden mb-4">
+                                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-40 object-cover">
+                                        </div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">后端微服务架构</h4>
+                                        <p class="text-xs text-slate-500">Golang + Kubernetes 实战</p>
+                                    </div>
+                                    </a>
+                                    <a href="https://www.bilibili.com/video/BV13Q4y1C7hS/?spm_id_from=333.337.search-card.all.click&vd_source=31b2c65b3e6b1bfeb998d49fdbde7287" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5 snap-start hover:border-blue-300 transition-colors">
+                                        <div class="relative h-40 overflow-hidden mb-4">
+                                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&amp;w=800&amp;auto=format&amp;fit=crop" class="w-full h-40 object-cover">
+                                        </div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">云原生与大规模部署</h4>
+                                        <p class="text-xs text-slate-500">从开发到运维的一体化工程实践</p>
+                                    </div>
+                                    </a>
+                                    <a href="https://www.bilibili.com/video/BV1Xb421E7jg/?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5 snap-start hover:border-blue-300 transition-colors">
+                                        <div class="relative h-40 overflow-hidden mb-4">
+                                            <img src="assets/数据工程与实时分析.jfif" class="w-full h-40 object-cover" alt="数据工程与实时分析">
+                                        </div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">数据工程与实时分析</h4>
+                                        <p class="text-xs text-slate-500">Spark / Flink 实战</p>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Design Panel -->
+                            <div data-panel="design" class="hidden">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                                    <span class="w-1.5 h-6 bg-pink-500 rounded-full"></span>
+                                    创意设计 热门课程
+                                </h3>
+                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    <!-- Card: UI/UX 设计基础 -->
+                                    <a href="https://www.bilibili.com/video/BV1QzADeFEcF/?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src="assets/UI.png" class="w-full h-40 object-cover" alt="UI/UX"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">UI/UX 设计基础</h4>
+                                        <p class="text-xs text-slate-500">Figma 与产品设计流程</p>
+                                    </div>
+                                    </a>
+
+                                    <!-- Card: 视觉传达与品牌设计 -->
+                                    <a href="https://www.bilibili.com/video/BV1Da411c78K/?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src="assets/视觉传达与品牌设计.jpg" class="w-full h-40 object-cover" alt="视觉传达与品牌设计"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">视觉传达与品牌设计</h4>
+                                        <p class="text-xs text-slate-500">从概念到落地的品牌项目</p>
+                                    </div>
+                                    </a>
+
+                                    <!-- New Card: 插画与商业表达 -->
+                                    <a href="https://search.bilibili.com/all?keyword=%E6%8F%92%E7%94%BB%E4%B8%8E%E5%95%86%E4%B8%9A%E8%A1%A8%E8%BE%BE&from_source=webtop_search" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" class="w-full h-40 object-cover" alt="插画"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">插画与商业表达</h4>
+                                        <p class="text-xs text-slate-500">插画技法、风格与品牌应用</p>
+                                    </div>
+                                    </a>
+
+                                    <!-- New Card: 设计系统与组件库 -->
+                                    <a href="https://search.bilibili.com/all?keyword=%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%BB%84%E4%BB%B6%E5%BA%93&from_source=webtop_search" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src=assets/设计系统与组件库.jpg class="w-full h-40 object-cover" alt="设计系统"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">设计系统与组件库</h4>
+                                        <p class="text-xs text-slate-500">从原子到产品的设计流程</p>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Language Panel -->
+                            <div data-panel="language" class="hidden">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                                    <span class="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
+                                    语言学习 热门课程
+                                </h3>
+                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    <!-- Card: 英语口语突破 -->
+                                    <a href="https://www.bilibili.com/video/BV1emBiYcEAV/?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=800&auto=format&fit=crop" class="w-full h-40 object-cover" alt="英语口语"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">英语口语突破</h4>
+                                        <p class="text-xs text-slate-500">日常与职场情景训练</p>
+                                    </div>
+                                    </a>
+
+                                    <!-- New Card: 商务英语与职场沟通 -->
+                                    <a href="https://search.bilibili.com/all?keyword=%E5%95%86%E5%8A%A1%E8%8B%B1%E8%AF%AD%E4%B8%8E%E8%81%8C%E5%9C%BA%E6%B2%9F%E9%80%9A&from_source=webtop_search" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src="assets/商务英语与职场沟通.jfif" class="w-full h-40 object-cover" alt="商务英语"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">商务英语与职场沟通</h4>
+                                        <p class="text-xs text-slate-500">邮件、会议与谈判实战表达</p>
+                                    </div>
+                                    </a>
+
+                                    <!-- New Card: 日语入门速成 -->
+                                    <a href="https://search.bilibili.com/all?keyword=%E6%97%A5%E8%AF%AD%E5%85%A5%E9%97%A8%E9%80%9F%E6%88%90&from_source=webtop_search" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop" class="w-full h-40 object-cover" alt="日语"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">日语入门速成</h4>
+                                        <p class="text-xs text-slate-500">平假名/片假名与常用表达</p>
+                                    </div>
+                                    </a>
+
+                                    <!-- New Card: 面试与职场口语实战 -->
+                                    <a href="https://search.bilibili.com/all?keyword=%E8%81%8C%E5%9C%BA%E5%8F%A3%E8%AF%AD%E5%AE%9E%E6%88%98&from_source=webtop_search" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src=assets/面试与职场口语实战.jpg class="w-full h-40 object-cover" alt="面试"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">面试与职场口语实战</h4>
+                                        <p class="text-xs text-slate-500">模拟面试问答与表达提升</p>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Finance Panel -->
+                            <div data-panel="finance" class="hidden">
+                                <h3 class="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                                    <span class="w-1.5 h-6 bg-amber-500 rounded-full"></span>
+                                    金融商科 热门课程
+                                </h3>
+                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    <!-- Card: 金融入门与投资基础 -->
+                                    <a href="https://search.bilibili.com/all?keyword=%E9%87%91%E8%9E%8D%E5%85%A5%E9%97%A8%E4%B8%8E%E6%8A%95%E8%B5%84%E5%9F%BA%E7%A1%80&from_source=webtop_search&spm_id_from=333.1007&search_source=5" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src="assets/金融入门与投资基础.avif" class="w-full h-40 object-cover" alt="金融入门与投资基础"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">金融入门与投资基础</h4>
+                                        <p class="text-xs text-slate-500">基础会计与投资原理</p>
+                                    </div>
+                                    </a>
+
+                                    <!-- New Card: 公司财务与会计基础 -->
+                                    <a href="https://search.bilibili.com/all?keyword=%E5%85%AC%E5%8F%B8%E8%B4%A2%E5%8A%A1%E4%B8%8E%E4%BC%9A%E8%AE%A1%E5%9F%BA%E7%A1%80&from_source=webtop_search" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src=assets/公司财务与会计基础.avif class="w-full h-40 object-cover" alt="公司财务"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">公司财务与会计基础</h4>
+                                        <p class="text-xs text-slate-500">会计报表与财务分析入门</p>
+                                    </div>
+                                    </a>
+
+                                    <!-- New Card: 财报解读与估值 -->
+                                    <a href="https://search.bilibili.com/all?keyword=%E8%B4%A2%E6%8A%A5%E8%A7%A3%E8%AF%BB%E4%B8%8E%E4%BC%B0%E5%80%BC&from_source=webtop_search" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src="https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=800&auto=format&fit=crop" class="w-full h-40 object-cover" alt="财报"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">财报解读与估值</h4>
+                                        <p class="text-xs text-slate-500">从报表到估值模型的实战方法</p>
+                                    </div>
+                                    </a>
+
+                                    <!-- New Card: 投资组合与风险管理 -->
+                                    <a href="https://search.bilibili.com/all?keyword=%E6%8A%95%E8%B5%84%E7%BB%84%E5%90%88%E4%B8%8E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86&from_source=webtop_search" target="_blank" rel="noopener noreferrer" class="block">
+                                    <div class="group bg-white rounded-xl border border-slate-200 p-5">
+                                        <div class="relative h-40 overflow-hidden mb-4"><img src=assets/投资组合与风险管理.jpg class="w-full h-40 object-cover" alt="投资组合"></div>
+                                        <h4 class="font-semibold text-slate-900 mb-2">投资组合与风险管理</h4>
+                                        <p class="text-xs text-slate-500">资产配置与风险度量方法</p>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 已移除：竞争力分析与成长任务（已迁移到 profile.html） -->
+
+                <!-- Career Library Preview (Split View) -->
+                <section class="h-[500px] flex gap-6 overflow-hidden" id="careers">
+                    <!-- Left: Categories -->
+                    <div class="w-1/4 bg-white rounded-xl border border-slate-200 flex flex-col hidden lg:flex">
+                        <div class="p-4 border-b border-slate-100">
+                            <h3 class="font-semibold text-slate-900">行业分类</h3>
+                        </div>
+                        <div class="flex-1 overflow-y-auto p-2 space-y-1">
+                                <button class="w-full text-left px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg flex justify-between items-center career-cat-btn" data-cat="it">
+                                    科技互联网 <span class="text-xs opacity-70">18</span>
+                                </button>
+                                <button class="w-full text-left px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg flex justify-between items-center transition-colors career-cat-btn" data-cat="finance">
+                                    金融 <span class="text-xs opacity-50">8</span>
+                                </button>
+                                <button class="w-full text-left px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg flex justify-between items-center transition-colors career-cat-btn" data-cat="law">
+                                    法律 <span class="text-xs opacity-50">6</span>
+                                </button>
+                                <button class="w-full text-left px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg flex justify-between items-center transition-colors career-cat-btn" data-cat="design">
+                                    设计 <span class="text-xs opacity-50">6</span>
+                                </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Listings -->
+                    <div class="flex-1 flex flex-col bg-white rounded-xl border border-slate-200">
+                        <div class="p-4 border-b border-slate-100 flex gap-4">
+                            <div class="relative flex-1">
+                                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                                <input id="careerSearchInput" type="text" placeholder="搜索 &quot;前端开发工程师&quot;" class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+                            </div>
+                            <button id="careerSearchBtn" class="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-lg hover:bg-slate-800 transition-colors">搜索</button>
+                        </div>
+                        <div class="flex-1 overflow-y-auto p-4 space-y-4" id="career-job-list">
+                            <!-- Job Card -->
+                            <a href="https://career.huawei.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-black rounded text-white flex items-center justify-center font-bold text-xs">华</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">前端开发工程师 (实习)</h4>
+                                            <p class="text-xs text-slate-500">华为 • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">2天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责云服务前端/控制台开发，熟悉 React 与 TypeScript，关注性能与可观测性。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">React</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Next.js</span>
+                                </div>
+                            </div>
+                            </a>
+                            <!-- 其余岗位卡片请依次加上 data-cat="it"、data-cat="finance"、data-cat="law"、data-cat="design"，以便筛选 -->
+
+                            <!-- Job Card -->
+                            <a href="https://hr.163.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="design">
+                             <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-indigo-600 rounded text-white flex items-center justify-center font-bold text-xs">网</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">初级产品设计师</h4>
+                                            <p class="text-xs text-slate-500">网易 • 杭州</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">4小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">参与游戏/内容产品的交互与视觉设计，需提供作品集并具备用户研究能力。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Figma</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">UI/UX</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Additional Job Card: 腾讯 后端 -->
+                            <a href="https://careers.tencent.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#1E90FF] rounded text-white flex items-center justify-center font-bold text-xs">T</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">后端开发工程师</h4>
+                                            <p class="text-xs text-slate-500">腾讯 • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">1天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责高并发服务端开发与性能优化，熟悉 Go 或 Java 优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Go</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">微服务</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Additional Job Card: 阿里 算法 -->
+                            <a href="https://talent.alibaba.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#FF6A00] rounded text-white flex items-center justify-center font-bold text-xs">A</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">算法工程师</h4>
+                                            <p class="text-xs text-slate-500">阿里巴巴 • 杭州</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">3天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责推荐/搜索算法优化，熟悉大规模离线/在线系统和机器学习模型。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Python</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">推荐</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Additional Job Card: 百度 数据工程师 -->
+                            <a href="https://talent.baidu.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#282C34] rounded text-white flex items-center justify-center font-bold text-xs">B</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">数据工程师</h4>
+                                            <p class="text-xs text-slate-500">百度 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">5小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">构建数据平台与 ETL 流程，支持实时与离线数据的高效处理。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Spark</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Hive</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Additional Job Card: 字节 Android -->
+                            <a href="https://job.bytedance.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#00A0F0] rounded text-white flex items-center justify-center font-bold text-xs">D</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">Android 工程师</h4>
+                                            <p class="text-xs text-slate-500">字节跳动 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">6天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责短视频客户端核心功能开发与稳定性优化，有大规模用户产品经验优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Kotlin</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">性能优化</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Additional Job Card: 美团 前端 -->
+                            <a href="https://about.meituan.com/careers" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#FF5A5F] rounded text-white flex items-center justify-center font-bold text-xs">M</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">前端工程师</h4>
+                                            <p class="text-xs text-slate-500">美团 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">12小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责商家端/用户端页面与组件化重构，熟悉 React/Typescript。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">React</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">TypeScript</span>
+                                </div>
+                            </div>
+                            </a>
+                            <!-- New: 金融类岗位 -->
+                            <a href="https://www.cmbchina.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#004fa3] rounded text-white flex items-center justify-center font-bold text-xs">招</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">投资银行分析师（校园）</h4>
+                                            <p class="text-xs text-slate-500">招商银行 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">5天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">支持项目尽职调查与财务模型构建，要求金融/会计等相关专业背景。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">财务分析</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">建模</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.pingan.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#E60012] rounded text-white flex items-center justify-center font-bold text-xs">平</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">风控分析师（实习）</h4>
+                                            <p class="text-xs text-slate-500">平安保险 • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">7小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">参与信贷与保险风控规则建设，数据敏感、具备统计/建模基础优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">风控</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">数据分析</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- New: 法律类岗位 -->
+                            <a href="https://www.zhonglun.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="law">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0B6E4F] rounded text-white flex items-center justify-center font-bold text-xs">中</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">律师助理（实习）</h4>
+                                            <p class="text-xs text-slate-500">中伦律师事务所 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">3天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">协助合同审阅、资料整理与法律检索，具有法律本科或以上优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">合同审查</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">法律检索</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.kwm.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="law">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0f172a] rounded text-white flex items-center justify-center font-bold text-xs">金</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">知识产权律师（初级）</h4>
+                                            <p class="text-xs text-slate-500">金杜律师事务所 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">1天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责专利/商标诉讼支持与风险评估，法律硕士或相关经验优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">知识产权</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">诉讼</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- New: 设计类岗位 -->
+                            <a href="https://careers.tencent.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="design">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#1E90FF] rounded text-white flex items-center justify-center font-bold text-xs">T</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">高级产品设计师</h4>
+                                            <p class="text-xs text-slate-500">腾讯 • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">12小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责核心产品视觉与交互设计，需有完整作品集与用户研究经验。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Figma</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">交互设计</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.netease.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="design">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#7C3AED] rounded text-white flex items-center justify-center font-bold text-xs">网</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">视觉设计师（游戏）</h4>
+                                            <p class="text-xs text-slate-500">网易 • 杭州</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">2天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责游戏美术与界面视觉执行，需有强烈的美术表现力与作品集。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Photoshop</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">游戏美术</span>
+                                </div>
+                            </div>
+                            </a>
+                            <!-- 新增批量岗位（开始） -->
+                            <!-- IT 类 -->
+                            <a href="https://career.jd.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#F60] rounded text-white flex items-center justify-center font-bold text-xs">京</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">平台运维工程师</h4>
+                                            <p class="text-xs text-slate-500">京东 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">3天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责云平台运维、监控与自动化脚本，熟悉容器化与 Kubernetes。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Kubernetes</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">运维</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://career.alibaba.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#FF6A00] rounded text-white flex items-center justify-center font-bold text-xs">阿</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">前端工程师（React）</h4>
+                                            <p class="text-xs text-slate-500">阿里巴巴 • 杭州</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">2天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责核心产品页面与组件化建设，熟悉 React 与性能优化。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">React</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">性能</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://careers.bytedance.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#00A0F0] rounded text-white flex items-center justify-center font-bold text-xs">字</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">SRE / 站点可靠性工程师</h4>
+                                            <p class="text-xs text-slate-500">字节跳动 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">6小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">提升服务可用性与自动化运维能力，熟悉监控与告警体系设计。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Prometheus</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">SRE</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://careers.tencent.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#1E90FF] rounded text-white flex items-center justify-center font-bold text-xs">T</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">后端工程师（Java）</h4>
+                                            <p class="text-xs text-slate-500">腾讯 • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">1天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">参与服务端设计与高并发场景优化，熟悉微服务与分布式架构。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Java</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">分布式</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://careers.shopee.cn" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#FF5A5F] rounded text-white flex items-center justify-center font-bold text-xs">S</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">数据平台工程师</h4>
+                                            <p class="text-xs text-slate-500">Shopee • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">4天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责数据仓库和实时流处理，熟悉 Flink / Kafka / Hive。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Flink</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Kafka</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://careers.microsoft.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0078D4] rounded text-white flex items-center justify-center font-bold text-xs">微</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">云平台研发工程师</h4>
+                                            <p class="text-xs text-slate-500">微软 (Microsoft) • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">2天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">参与云服务核心模块开发，具备分布式系统与大规模性能优化经验。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">C#</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">分布式</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Finance 类 -->
+                            <a href="https://www.csfb.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#003366] rounded text-white flex items-center justify-center font-bold text-xs">高</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">投研助理（基金）</h4>
+                                            <p class="text-xs text-slate-500">高盛投资团队 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">1周前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">参与宏观与行业研究，撰写投资报告，熟悉财务报表分析。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">量化</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">估值</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.icbc.com.cn" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0052A5] rounded text-white flex items-center justify-center font-bold text-xs">工</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">零售信贷产品经理</h4>
+                                            <p class="text-xs text-slate-500">工商银行 • 广州</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">5天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责信贷产品设计与优化，关注风控与用户体验。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">产品</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">风控</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.haitong.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0A4576] rounded text-white flex items-center justify-center font-bold text-xs">海</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">并购顾问（投行部）</h4>
+                                            <p class="text-xs text-slate-500">海通证券 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">昨天</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">参与并购项目尽调与估值分析，需具备良好财务建模能力。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">估值</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">并购</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Law 类 -->
+                            <a href="https://www.zhonglun.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="law">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0B6E4F] rounded text-white flex items-center justify-center font-bold text-xs">中</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">企业合规专员</h4>
+                                            <p class="text-xs text-slate-500">中伦 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">4天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责合规政策落地与培训，熟悉监管环境与合规流程优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">合规</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">政策</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.kwm.com" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="law">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0f172a] rounded text-white flex items-center justify-center font-bold text-xs">金</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">劳动法方向律师</h4>
+                                            <p class="text-xs text-slate-500">金杜 • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">2天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">处理劳动关系争议与合规咨询，具有仲裁/诉讼辅助经验优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">劳动法</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">诉讼</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Design 类 -->
+                            <a href="https://www.ican.cn" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="design">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#7C3AED] rounded text-white flex items-center justify-center font-bold text-xs">设</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">交互设计师（移动端）</h4>
+                                            <p class="text-xs text-slate-500">独立产品团队 • 远程</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">3天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责移动端交互与流程设计，具备原型与可用性测试经验。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Prototyping</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Figma</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="design">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#111827] rounded text-white flex items-center justify-center font-bold text-xs">B</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">品牌视觉设计师</h4>
+                                            <p class="text-xs text-slate-500">互联网品牌 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">1天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责品牌视觉体系搭建与活动视觉执行，需有完整作品集。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Brand</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Illustrator</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- 新增批量岗位（结束） -->
+                            <!-- 继续剧增岗位（批量插入开始） -->
+                            <!-- IT 批量 -->
+                            <a href="https://www.oracle.com/cn/corporate/careers/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#F36] rounded text-white flex items-center justify-center font-bold text-xs">O</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">云数据库工程师</h4>
+                                            <p class="text-xs text-slate-500">甲骨文 (Oracle) • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">6天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">云数据库研发与性能优化，熟悉 MySQL/Postgres 与云部署。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">SQL</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">云</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://jobs.didi.cn/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#FF8C00] rounded text-white flex items-center justify-center font-bold text-xs">滴</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">测试开发工程师</h4>
+                                            <p class="text-xs text-slate-500">滴滴 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">3天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责自动化测试框架与持续集成，熟悉 Python/Java 自动化工具。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">自动化</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">CI/CD</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://career.google.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#4285F4] rounded text-white flex items-center justify-center font-bold text-xs">G</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">机器学习工程师</h4>
+                                            <p class="text-xs text-slate-500">谷歌 (Google) • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">昨天</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">模型训练与部署，熟悉 TensorFlow / PyTorch 与大规模训练。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">ML</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">分布式</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://careers.sap.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0FAAFF] rounded text-white flex items-center justify-center font-bold text-xs">S</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">企业应用开发工程师</h4>
+                                            <p class="text-xs text-slate-500">SAP • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">4天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责 ERP / 企业应用模块开发，有企业级系统集成经验优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Java</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">系统集成</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://careers.ibm.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#052F6C] rounded text-white flex items-center justify-center font-bold text-xs">I</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">区块链开发工程师</h4>
+                                            <p class="text-xs text-slate-500">IBM (IBM 中国) • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">1天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">智能合约与链上应用开发，有以太坊/Hyperledger 经验优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Solidity</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">区块链</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- IT 继续更多样本 -->
+                            <a href="https://jobs.apple.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#000000] rounded text-white flex items-center justify-center font-bold text-xs">A</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">系统工程师（硬件平台）</h4>
+                                            <p class="text-xs text-slate-500">苹果 (Apple) • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">8小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">参与硬件平台驱动与底层系统优化，有嵌入式开发经验。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">嵌入式</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">驱动</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://careers.intel.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0071C5] rounded text-white flex items-center justify-center font-bold text-xs">I</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">芯片验证工程师</h4>
+                                            <p class="text-xs text-slate-500">英特尔 (Intel) • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">3天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责芯片功能与性能验证，熟悉 RTL 与验证平台搭建。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Verilog</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">验证</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Finance 批量 -->
+                            <a href="https://www.morganstanley.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0B3D91] rounded text-white flex items-center justify-center font-bold text-xs">摩</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">投行实习分析师</h4>
+                                            <p class="text-xs text-slate-500">摩根士丹利 (Morgan Stanley) • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">2天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">支持并购/资本市场项目，熟悉财务建模与 PPT 报告撰写。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">建模</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">投行</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.credit-suisse.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#002F6C] rounded text-white flex items-center justify-center font-bold text-xs">瑞</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">财富管理顾问助理</h4>
+                                            <p class="text-xs text-slate-500">瑞士信贷 (Credit Suisse) • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">5天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">协助高净值客户投资组合构建与服务，具备良好沟通能力。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">投顾</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">组合</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.hsbc.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#004C97] rounded text-white flex items-center justify-center font-bold text-xs">汇</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">合规风控分析师</h4>
+                                            <p class="text-xs text-slate-500">汇丰银行 (HSBC) • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">昨天</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">合规监测与内控流程优化，熟悉跨境合规或银行监管要求优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">合规</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">反洗钱</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Law 批量 -->
+                            <a href="https://www.freshfields.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="law">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0A3B58] rounded text-white flex items-center justify-center font-bold text-xs">F</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">公司法业务律师</h4>
+                                            <p class="text-xs text-slate-500">Freshfields • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">4天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">处理公司并购与合规事务，具备跨境交易与外资并购经验优先。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">并购</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">合规</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.allseno.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="law">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0B6E4F] rounded text-white flex items-center justify-center font-bold text-xs">法</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">诉讼律师（商业案件）</h4>
+                                            <p class="text-xs text-slate-500">本所 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">昨天</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">处理民商事诉讼与证据准备，具备庭审与撰写法律意见经验。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">诉讼</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">证据</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- Design 批量 -->
+                            <a href="https://www.adobe.com/careers.html" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="design">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#FF0000] rounded text-white flex items-center justify-center font-bold text-xs">A</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">产品视觉设计师</h4>
+                                            <p class="text-xs text-slate-500">Adobe • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">2天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责产品视觉规范与组件视觉系统建设，需有品牌视觉经验。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">视觉</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Design System</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.tencent.com/en-us/careers.html" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="design">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#1E90FF] rounded text-white flex items-center justify-center font-bold text-xs">T</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">动效设计师</h4>
+                                            <p class="text-xs text-slate-500">腾讯 • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">6小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责交互动效与产品引导，需掌握 AE / Lottie 等工具链。</p>
+                                <div class="flex gap-2 pl-[52px]">
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">AE</span>
+                                    <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Lottie</span>
+                                </div>
+                            </div>
+                            </a>
+
+                            <!-- 批量插入结束 -->
+                            <!-- 大规模扩充：再追加大量中国境内岗位（开始） -->
+                            <!-- IT 扩充组 -->
+                            <a href="https://www.sohu.com/corp/careers" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#FF4500] rounded text-white flex items-center justify-center font-bold text-xs">搜</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">后端开发工程师</h4>
+                                            <p class="text-xs text-slate-500">搜狐 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">3小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责核心服务与 API 设计，熟悉 Java/Python 与高并发架构。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Java</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">分布式</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.kuaishou.com/careers" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#FF5A5F] rounded text-white flex items-center justify-center font-bold text-xs">快</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">移动端高级工程师</h4>
+                                            <p class="text-xs text-slate-500">快手 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">1天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责 Android / iOS 客户端核心功能与性能优化。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Kotlin</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">iOS</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.huya.com/jobs" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#1E90FF] rounded text-white flex items-center justify-center font-bold text-xs">虎</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">实时流处理工程师</h4>
+                                            <p class="text-xs text-slate-500">虎牙 • 广州</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">5天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责实时流架构与延迟优化，熟悉 Flink/Kafka。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Flink</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">Kafka</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.360.cn/careers/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0F172A] rounded text-white flex items-center justify-center font-bold text-xs">360</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">安全研发工程师</h4>
+                                            <p class="text-xs text-slate-500">360 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">2天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">从事漏洞挖掘与安全产品研发，熟悉安全攻防与渗透测试流程。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">安全</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">渗透</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.lenovo.com/cn/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#003366] rounded text-white flex items-center justify-center font-bold text-xs">联</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">嵌入式软件工程师</h4>
+                                            <p class="text-xs text-slate-500">联想 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">4天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">嵌入式系统开发与驱动调优，熟悉 C/C++ 与 RTOS。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">嵌入式</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">RTOS</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.hikvision.com/cn/careers" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="it">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0B6E4F] rounded text-white flex items-center justify-center font-bold text-xs">海</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">视频算法工程师</h4>
+                                            <p class="text-xs text-slate-500">海康威视 • 杭州</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">6小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责视觉算法与模型优化，具备 CV 与深度学习经验。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">CV</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">深度学习</span></div>
+                            </div>
+                            </a>
+
+                            <!-- Finance 扩充组 -->
+                            <a href="https://www.citics.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#8B0000] rounded text-white flex items-center justify-center font-bold text-xs">中信</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">资产管理分析师</h4>
+                                            <p class="text-xs text-slate-500">中信证券 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">2天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">参与基金投资研究与组合构建，精通财务报表分析。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">基金</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">研究</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.puhuaip.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#004fa3] rounded text-white flex items-center justify-center font-bold text-xs">浦</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">金融科技产品经理</h4>
+                                            <p class="text-xs text-slate-500">浦发银行 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">3天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责金融产品规划与风控模型落地，需理解业务与技术。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">产品</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">风控</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.credit-easy.cn/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0A5F9A] rounded text-white flex items-center justify-center font-bold text-xs">信</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">量化研究员（策略）</h4>
+                                            <p class="text-xs text-slate-500">国内量化团队 • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">6小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">研究因子与策略回测，熟悉 Python 与风险调整方法。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">量化</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">回测</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.szse.cn/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="finance">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0066CC] rounded text-white flex items-center justify-center font-bold text-xs">深</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">交易监管数据分析师</h4>
+                                            <p class="text-xs text-slate-500">深圳证券交易所 • 深圳</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">昨天</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责交易数据监测与异常检测模型开发，关注合规与风控。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">数据</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">合规</span></div>
+                            </div>
+                            </a>
+
+                            <!-- Law 扩充组 -->
+                            <a href="https://www.dachenglaw.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="law">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0B6E4F] rounded text-white flex items-center justify-center font-bold text-xs">大</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">知识产权顾问</h4>
+                                            <p class="text-xs text-slate-500">大成 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">3天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责专利/商标事务处理与侵权分析，需有理工科背景优先。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">IP</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">专利</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.tianhailegal.com/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="law">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#0F172A] rounded text-white flex items-center justify-center font-bold text-xs">天</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">涉外并购律师</h4>
+                                            <p class="text-xs text-slate-500">天达 • 北京</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">6小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">处理跨境并购项目与合同谈判，具备英语沟通与外资经验优先。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">并购</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">外资</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.lawfirm-example.cn/" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="law">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#8B0000] rounded text-white flex items-center justify-center font-bold text-xs">律</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">商业合规律师</h4>
+                                            <p class="text-xs text-slate-500">某律师所 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">2天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">提供企业合规咨询与内部控制建议，熟悉行业监管要点。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">合规</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">咨询</span></div>
+                            </div>
+                            </a>
+
+                            <!-- Design 扩充组 -->
+                            <a href="https://www.byteplus.com/career" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="design">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#7C3AED] rounded text-white flex items-center justify-center font-bold text-xs">字+</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">交互设计师（海外产品）</h4>
+                                            <p class="text-xs text-slate-500">字节跳动 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">1天前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责国际化产品的交互本地化与流程优化，了解多语言体验。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">交互</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">国际化</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.meitu.com/careers" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="design">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#FF5A5F] rounded text-white flex items-center justify-center font-bold text-xs">美</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">视觉设计师（短视频）</h4>
+                                            <p class="text-xs text-slate-500">美图 • 广州</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">7小时前</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责短视频视觉与创意素材设计，要求有作品集与短视频经验。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">AE</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">短视频</span></div>
+                            </div>
+                            </a>
+
+                            <a href="https://www.ximalaya.com/corp/jobs" target="_blank" rel="noopener noreferrer" class="block career-job-card" data-cat="design">
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group bg-white">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-[#1E90FF] rounded text-white flex items-center justify-center font-bold text-xs">喜</div>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600">产品原型设计师</h4>
+                                            <p class="text-xs text-slate-500">喜马拉雅 • 上海</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-medium text-slate-400">昨天</span>
+                                </div>
+                                <p class="text-sm text-slate-600 line-clamp-2 mb-3 pl-[52px]">负责原型与可用性测试，提升音频产品的用户体验。</p>
+                                <div class="flex gap-2 pl-[52px]"><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">原型</span><span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] font-medium rounded">测试</span></div>
+                            </div>
+                            </a>
+
+                            <!-- 大规模扩充结束 -->
+                             </div>
+                     </div>
+                 </section>
+
+                <!-- 登录页面已迁移 -->
+                <section id="login-moved" class="border-t border-slate-200 pt-10 mt-10">
+                    <div class="max-w-md mx-auto text-center py-8">
+                        <h3 class="text-lg font-semibold text-slate-900 mb-3">登录组件已移动</h3>
+                        <p class="text-sm text-slate-500 mb-4">身份验证组件已移至独立页面以便单独访问与复用。</p>
+                        <a href="login.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg">打开登录页面</a>
+                    </div>
+                </section>
+                
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        // Tab switching for courses
+        (function(){
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('[data-panel]');
+
+            function setActive(tabKey){
+                tabs.forEach(b=>{
+                    if(b.getAttribute('data-tab')===tabKey){
+                        b.classList.remove('text-slate-500');
+                        b.classList.add('text-blue-600','font-semibold');
+                        b.classList.add('border-b-2','border-blue-600');
+                    } else {
+                        b.classList.remove('text-blue-600','font-semibold');
+                        b.classList.remove('border-b-2','border-blue-600');
+                        b.classList.add('text-slate-500');
+                    }
+                });
+
+                panels.forEach(p=>{
+                    p.classList.add('hidden');
+                    if(p.getAttribute('data-panel')===tabKey) p.classList.remove('hidden');
+                });
+            }
+
+            tabs.forEach(tb=>{
+                tb.addEventListener('click', ()=>{
+                    const key = tb.getAttribute('data-tab');
+                    setActive(key);
+                });
+            });
+
+            // init - show recommended
+            setActive('recommended');
+            // Career category filter
+            const catBtns = document.querySelectorAll('.career-cat-btn');
+            const jobCards = document.querySelectorAll('.career-job-card');
+            catBtns.forEach(btn=>{
+                btn.addEventListener('click',()=>{
+                    catBtns.forEach(b=>b.classList.remove('text-blue-600','bg-blue-50'));
+                    btn.classList.add('text-blue-600','bg-blue-50');
+                    const cat = btn.getAttribute('data-cat');
+                    jobCards.forEach(card=>{
+                        if(cat==='it'){
+                            card.style.display = card.getAttribute('data-cat')==='it' ? '' : 'none';
+                        }else{
+                            card.style.display = card.getAttribute('data-cat')===cat ? '' : 'none';
+                        }
+                    });
+                });
+            });
+            // 默认激活第一个分类（科技互联网）
+            if(catBtns.length) catBtns[0].click();
+        })();
+
+        // Authentication gating: hide login-moved section when authenticated,
+        // update profile link, and redirect unauthenticated clicks to login.
+        (function(){
+            // sync persistent login
+            if(localStorage.getItem('uni_auth')==='true'){
+                sessionStorage.setItem('uni_auth','true');
+                sessionStorage.setItem('uni_user', localStorage.getItem('uni_user'));
+            }
+
+
+            const isAuth = sessionStorage.getItem('uni_auth')==='true';
+
+            // Toggle visibility of the "登录组件已迁移" block
+            const loginMoved = document.getElementById('login-moved');
+            if(loginMoved){
+                loginMoved.style.display = isAuth ? 'none' : '';
+            }
+
+            // Update sidebar "我的档案" link to point to profile when logged in
+            const sidebarProfile = document.querySelector('aside a[href="login.html"]');
+            if(sidebarProfile){
+                sidebarProfile.href = isAuth ? 'profile.html' : 'login.html';
+            }
+
+            // Update top-right user display and hero greeting
+            const topUserName = document.getElementById('topUserName');
+            const topUserSub = document.getElementById('topUserSub');
+            const topAvatar = document.getElementById('topUserAvatar');
+            const greetName = document.getElementById('greetName');
+            if(isAuth && topUserName){
+                const u = sessionStorage.getItem('uni_user') || localStorage.getItem('uni_user') || '用户';
+                topUserName.textContent = u;
+                topUserName.href = 'profile.html';
+                topUserSub.textContent = '';
+                topAvatar.alt = u;
+                if(greetName) greetName.textContent = u;
+            } else if(topUserName){
+                topUserName.textContent = '登录';
+                topUserName.href = 'login.html';
+                topUserSub.textContent = '';
+                if(greetName) greetName.textContent = '同学';
+            }
+
+            // Intercept clicks only on links that require auth (have 'auth-required' class)
+            // and only when not logged in. Add 'auth-required' to career/job/course anchors on init.
+                (function(){
+                // mark course links and career job cards as auth-required
+                document.querySelectorAll('#courses-panels a, .career-job-card').forEach(a=>a.classList.add('auth-required'));
+
+                // 统计每个分类的岗位数量并更新侧栏显示
+                function updateCareerCounts(){
+                    const counts = {};
+                    document.querySelectorAll('.career-job-card').forEach(card=>{
+                        const c = (card.getAttribute('data-cat')||'it').trim();
+                        counts[c] = (counts[c]||0) + 1;
+                    });
+                    document.querySelectorAll('.career-cat-btn').forEach(btn=>{
+                        const cat = btn.getAttribute('data-cat');
+                        const span = btn.querySelector('span');
+                        if(span) span.textContent = counts[cat] || 0;
+                    });
+                }
+                // 初始更新
+                try{ updateCareerCounts(); }catch(e){/* ignore */}
+                // 暴露一个接口以便以后手动触发（可用于动态增删）
+                window.updateCareerCounts = updateCareerCounts;
+
+                document.addEventListener('click', function(e){
+                    // allow if already authenticated
+                    if(sessionStorage.getItem('uni_auth')==='true') return;
+                    const a = e.target.closest('a');
+                    if(!a) return;
+                    // allow in-page anchors and the login page itself
+                    const href = a.getAttribute('href');
+                    if(!href || href.startsWith('#') || href === 'login.html') return;
+                    // only intercept links explicitly marked
+                    if(a.classList.contains('auth-required') || a.closest('.auth-required')){
+                        e.preventDefault();
+                        location.href = 'login.html';
+                    }
+                }, true);
+            })();
+
+        // Job search: find job card by keyword or full name, switch category, scroll and highlight
+        (function(){
+            function normalize(s){
+                return (s||'').toString().trim().toLowerCase();
+            }
+
+            function highlightCard(card){
+                card.classList.add('ring-2','ring-blue-300','shadow-lg');
+                setTimeout(()=>{ card.classList.remove('ring-2','ring-blue-300','shadow-lg'); }, 3000);
+            }
+
+            function showAndScrollToCard(anchor){
+                if(!anchor) return;
+                // Ensure its category is shown
+                const cat = anchor.getAttribute('data-cat');
+                if(cat){
+                    const btn = document.querySelector('.career-cat-btn[data-cat="'+cat+'"]');
+                    if(btn) btn.click();
+                }
+                // small delay to allow filtering
+                setTimeout(()=>{
+                    anchor.scrollIntoView({behavior:'smooth', block:'center'});
+                    highlightCard(anchor.querySelector('.p-4') || anchor);
+                }, 220);
+            }
+
+            function searchJobs(q){
+                q = normalize(q);
+                if(!q) return;
+                const cards = Array.from(document.querySelectorAll('.career-job-card'));
+                // 仅基于岗位主标题 (h4) 匹配：优先精确匹配，再做包含匹配
+                let found = cards.find(a => normalize(a.querySelector('h4')?.textContent) === q);
+                if(!found){
+                    found = cards.find(a => normalize(a.querySelector('h4')?.textContent).includes(q));
+                }
+                if(found){
+                    showAndScrollToCard(found);
+                } else {
+                    alert('未找到匹配的职位标题："' + q + '"');
+                }
+            }
+
+            const gInput = document.getElementById('globalSearchInput');
+            if(gInput){
+                gInput.addEventListener('keydown', function(e){
+                    if(e.key === 'Enter'){
+                        const q = gInput.value || '';
+                        searchJobs(q);
+                    }
+                });
+            }
+
+            const careerInput = document.getElementById('careerSearchInput');
+            const careerBtn = document.getElementById('careerSearchBtn');
+            if(careerBtn && careerInput){
+                careerBtn.addEventListener('click', function(){ searchJobs(careerInput.value || ''); });
+                careerInput.addEventListener('keydown', function(e){ if(e.key==='Enter'){ searchJobs(careerInput.value||''); } });
+            }
+        })();
+        })();
+    </script>
+
+</body></html>

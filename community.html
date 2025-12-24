@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>社区 - 大学生岗位胜任力提升平台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <main class="max-w-3xl mx-auto p-6">
+    <a href="generated-page.html" class="text-sm text-blue-600 hover:underline">← 返回主页</a>
+    <div class="mt-6 bg-white rounded-xl border border-slate-200 p-6">
+      <h1 class="text-2xl font-semibold">社区</h1>
+      <p class="text-sm text-slate-500 mt-2">分享你的经验，提问或交流职业发展。</p>
+
+      <div class="mt-4">
+        <textarea id="postInput" rows="4" placeholder="写下你的问题或经验..." class="w-full px-4 py-3 border border-slate-200 rounded-lg outline-none"></textarea>
+        <div class="flex items-center justify-between mt-2">
+          <div class="text-sm text-slate-400">本地存储帖子，仅作示例</div>
+          <div>
+            <button id="postBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg">发布</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="posts" class="mt-6 space-y-4"></div>
+    </div>
+  </main>
+
+  <script>
+    const key = 'uni_community_posts';
+    function loadPosts(){
+      const raw = localStorage.getItem(key);
+      if(raw) return JSON.parse(raw);
+      // seed sample posts from 求职者 and 招聘人 when empty
+      const seed = [
+        {
+          text: '分享一次面试经验：我在项目中使用 React+TypeScript 开发了一个小型管理后台，面试时重点介绍了我在状态管理和组件抽象上的思路，HR 问了很多项目细节，面试官也很看重沟通与协作。最终拿到实习 offer，建议大家准备真实项目案例。',
+          name: '求职者小李',
+          t: Date.now() - 1000*60*60*24*7
+        },
+        {
+          text: '作为招聘人，我想给同学们几点建议：1）简历突出项目贡献与结果；2）面试中主动讲清楚你学到的点和遇到的挑战；3）不要只写技术栈，写明你在团队中承担的角色。希望更多同学能准备好这些要点。',
+          name: 'HR张经理（招聘）',
+          t: Date.now() - 1000*60*60*24*3
+        }
+      ];
+      localStorage.setItem(key, JSON.stringify(seed));
+      return seed;
+    }
+    function savePosts(list){ localStorage.setItem(key, JSON.stringify(list)); }
+
+    function render(){
+      const container = document.getElementById('posts');
+      const posts = loadPosts().slice().reverse();
+      if(!posts.length){ container.innerHTML = '<p class="text-sm text-slate-500">暂无帖子，成为第一个发帖的人吧！</p>'; return; }
+      container.innerHTML = '';
+      posts.forEach(p=>{
+        const div = document.createElement('div');
+        div.className = 'bg-slate-50 border border-slate-100 p-4 rounded-lg';
+        div.innerHTML = `<div class="flex items-start justify-between">
+          <div>
+            <div class="font-semibold">${p.name||'匿名'}</div>
+            <div class="text-xs text-slate-400">${new Date(p.t).toLocaleString()}</div>
+          </div>
+        </div>
+        <div class="mt-2 text-sm text-slate-700">${escapeHtml(p.text)}</div>`;
+        container.appendChild(div);
+      });
+    }
+
+    function escapeHtml(s){ return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;'); }
+
+    document.getElementById('postBtn').addEventListener('click', ()=>{
+      const text = document.getElementById('postInput').value.trim();
+      if(!text){ alert('请输入内容'); return; }
+      const isAuth = sessionStorage.getItem('uni_auth')==='true' || localStorage.getItem('uni_auth')==='true';
+      const author = isAuth ? (localStorage.getItem('uni_user') || '学员') : '匿名';
+      const list = loadPosts();
+      list.push({text, name:author, t: Date.now()});
+      savePosts(list);
+      document.getElementById('postInput').value = '';
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

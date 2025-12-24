@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>收藏职位 - 大学生岗位胜任力提升平台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <main class="max-w-6xl mx-auto p-6">
+    <a href="generated-page.html" class="text-sm text-blue-600 hover:underline">← 返回主页</a>
+
+    <h1 class="text-2xl font-semibold mt-4">我的收藏</h1>
+    <p class="text-sm text-slate-500 mt-1">以下为你收藏的职位（存于本地，仅为示例）。</p>
+
+    <div class="mt-6 bg-white rounded-xl border border-slate-200 p-6">
+      <div id="favList" class="grid md:grid-cols-2 gap-4"></div>
+      <div id="empty" class="text-sm text-slate-500 mt-4 hidden">你还没有收藏职位。</div>
+    </div>
+  </main>
+
+  <script>
+    const jobs = [
+      {id:1,title:'前端实习工程师',company:'某科技有限公司',loc:'上海',type:'intern',salary:'面议',desc:'熟悉 HTML/CSS/JS，掌握 React 加分'},
+      {id:2,title:'数据分析实习',company:'数据智能公司',loc:'北京',type:'intern',salary:'3000-5000',desc:'熟悉 Excel / SQL / Python'},
+      {id:3,title:'后端开发工程师',company:'云服务厂商',loc:'深圳',type:'full',salary:'15k-25k',desc:'Golang 或 Java，熟悉微服务'},
+      {id:4,title:'产品经理',company:'互联网公司',loc:'杭州',type:'full',salary:'12k-20k',desc:'有项目经验，沟通能力强'}
+    ];
+
+    function loadFavs(){
+      return JSON.parse(localStorage.getItem('uni_fav_jobs')||'[]');
+    }
+
+    function render(){
+      const favs = loadFavs();
+      const container = document.getElementById('favList');
+      container.innerHTML = '';
+      if(!favs.length){ document.getElementById('empty').classList.remove('hidden'); return; }
+      document.getElementById('empty').classList.add('hidden');
+      favs.forEach(id=>{
+        const j = jobs.find(x=>x.id===id);
+        if(!j) return;
+        const div = document.createElement('div');
+        div.className = 'bg-white rounded-xl border border-slate-200 p-4 flex flex-col justify-between';
+        div.innerHTML = `
+          <div>
+            <h3 class="font-semibold text-lg">${j.title}</h3>
+            <p class="text-sm text-slate-500 mt-1">${j.company} · ${j.loc} · <span class="text-slate-600">${j.salary}</span></p>
+            <p class="text-sm text-slate-500 mt-2 line-clamp-3">${j.desc}</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <div class="text-xs text-slate-400">类型：${j.type==='intern'?'实习':'全职'}</div>
+            <div class="flex gap-2">
+              <button data-id="${j.id}" class="applyBtn bg-blue-600 text-white px-3 py-1.5 rounded-lg text-sm">申请</button>
+              <button data-id="${j.id}" class="removeBtn border border-slate-200 px-3 py-1.5 rounded-lg text-sm">移除</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      document.querySelectorAll('.removeBtn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const id = parseInt(btn.getAttribute('data-id'),10);
+          let favs = loadFavs(); favs = favs.filter(x=>x!==id);
+          localStorage.setItem('uni_fav_jobs', JSON.stringify(favs));
+          render();
+        });
+      });
+
+      document.querySelectorAll('.applyBtn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const isAuth = sessionStorage.getItem('uni_auth')==='true' || localStorage.getItem('uni_auth')==='true';
+          if(!isAuth){
+            const returnTo = encodeURIComponent(location.href);
+            location.href = 'login.html?return=' + returnTo;
+            return;
+          }
+          alert('已申请（模拟）');
+        });
+      });
+    }
+
+    render();
+  </script>
+</body>
+</html>
