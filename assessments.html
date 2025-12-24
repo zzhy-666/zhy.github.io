@@ -14,11 +14,73 @@
       <h1 class="text-2xl font-semibold">能力测评</h1>
       <p class="text-sm text-slate-500 mt-2">开始测评以获得技能报告与课程建议。</p>
 
-      <div id="statusArea" class="mt-6"></div>
+      <!-- Enhanced assessment panel with tech-themed visuals -->
+      <div class="mt-6 relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none opacity-30">
+          <svg viewBox="0 0 800 200" class="w-full h-full" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0%" stop-color="#60a5fa" />
+                <stop offset="50%" stop-color="#7dd3fc" />
+                <stop offset="100%" stop-color="#a78bfa" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="800" height="200" fill="url(#g1)"></rect>
+            <g fill="none" stroke="#ffffff" stroke-opacity="0.12">
+              <circle cx="100" cy="100" r="80"></circle>
+              <circle cx="300" cy="50" r="50"></circle>
+              <circle cx="600" cy="120" r="70"></circle>
+            </g>
+          </svg>
+        </div>
 
-      <div class="mt-6">
-        <button id="startBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg">开始测评</button>
-        <button id="viewReport" class="ml-3 bg-white border border-slate-200 px-4 py-2 rounded-lg">查看历史报告</button>
+        <div class="relative z-10 bg-white rounded-xl border border-slate-200 p-6 shadow-md">
+          <div class="flex items-start gap-6">
+            <div class="grow">
+              <h2 class="text-2xl font-semibold">智能能力测评</h2>
+              <p class="text-sm text-slate-500 mt-2">我们的 AI 测评基于岗位能力框架分析你的技能缺口，测评结束后将生成个性化学习路径与推荐课程。</p>
+
+              <div id="statusArea" class="mt-4"></div>
+
+              <div class="mt-5 flex items-center gap-3">
+                <button id="startBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow">开始测评</button>
+                <button id="viewReport" class="bg-white border border-slate-200 px-4 py-2 rounded-lg">查看历史报告</button>
+                <a href="#" class="ml-4 text-xs text-slate-400">测评说明</a>
+              </div>
+            </div>
+
+            <aside class="w-48 hidden sm:block">
+              <div class="p-4 rounded-lg bg-slate-50 border border-slate-100">
+                <h3 class="text-sm font-semibold text-slate-800">测评流程</h3>
+                <ol class="mt-3 text-xs text-slate-600 space-y-2">
+                  <li>1）基础能力诊断（15题）</li>
+                  <li>2）岗位情景题（10题）</li>
+                  <li>3）个性化分析（自动生成）</li>
+                </ol>
+              </div>
+
+              <div class="mt-4 p-3 rounded-lg bg-white border border-slate-100 text-center">
+                <div class="text-xs text-slate-500">模型</div>
+                <div class="text-lg font-bold text-blue-600">AI-Profiler</div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-4 rounded-lg bg-slate-50 border border-slate-100">
+              <div class="text-xs text-slate-500">覆盖维度</div>
+              <div class="text-lg font-semibold text-slate-900">核心能力 · 岗位感知</div>
+            </div>
+            <div class="p-4 rounded-lg bg-slate-50 border border-slate-100">
+              <div class="text-xs text-slate-500">耗时</div>
+              <div class="text-lg font-semibold text-slate-900">约 10-20 分钟</div>
+            </div>
+            <div class="p-4 rounded-lg bg-slate-50 border border-slate-100">
+              <div class="text-xs text-slate-500">报告</div>
+              <div class="text-lg font-semibold text-slate-900">PDF / 在线报告</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>

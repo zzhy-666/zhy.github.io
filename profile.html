@@ -22,81 +22,63 @@
             </div>
         </header>
 
-        <!-- Profile & Gamification (copied) -->
-        <section class="grid lg:grid-cols-2 gap-8">
-            <div class="bg-white rounded-2xl border border-slate-200 p-6">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-lg font-semibold text-slate-900">竞争力分析</h2>
-                    <button class="text-sm text-blue-600 hover:underline">查看详情</button>
+        <section class="grid lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-1 bg-white rounded-2xl border border-slate-200 p-6">
+                <div class="flex flex-col items-center text-center">
+                    <img id="pf-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop" alt="avatar" class="w-28 h-28 rounded-full object-cover mb-4 border-4 border-white shadow-md">
+                    <h2 id="pf-name" class="text-xl font-semibold text-slate-900">用户</h2>
+                    <p id="pf-title" class="text-sm text-slate-500 mb-3">求职中 · 前端工程师</p>
+                    <div class="flex gap-2 mb-3">
+                        <span id="pf-location" class="text-xs text-slate-400">上海</span>
+                        <span class="text-xs text-slate-400">·</span>
+                        <span id="pf-availability" class="text-xs text-green-600 font-medium">随时到岗</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <a id="pf-edit" class="px-3 py-1 text-sm bg-blue-600 text-white rounded-lg">编辑资料</a>
+                        <label class="px-3 py-1 text-sm bg-slate-100 rounded-lg cursor-pointer"><input id="pf-upload" type="file" accept="image/*" class="hidden"> 上传头像</label>
+                    </div>
                 </div>
-                <div class="flex items-center gap-8">
-                    <div class="relative w-32 h-32 flex items-center justify-center">
-                        <svg class="transform -rotate-90 w-32 h-32">
-                            <circle cx="64" cy="64" r="56" stroke="currentColor" stroke-width="8" fill="transparent" class="text-slate-100"></circle>
-                            <circle cx="64" cy="64" r="56" stroke="currentColor" stroke-width="8" fill="transparent" stroke-dasharray="351.86" stroke-dashoffset="70" class="text-blue-600" stroke-linecap="round"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex flex-col items-center justify-center">
-                            <span class="text-xl font-bold text-slate-900">前 20%</span>
-                            <span class="text-xs font-medium text-slate-500">排名</span>
-                        </div>
-                    </div>
-                    <div class="flex-1 space-y-4">
-                        <div>
-                            <div class="flex justify-between text-sm mb-1">
-                                <span class="text-slate-500">硬技能</span>
-                                <span class="font-medium text-slate-900">8.2/10</span>
-                            </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2">
-                                <div class="bg-blue-600 h-2 rounded-full" style="width: 82%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm mb-1">
-                                <span class="text-slate-500">软技能</span>
-                                <span class="font-medium text-slate-900">6.5/10</span>
-                            </div>
-                            <div class="w-full bg-slate-100 rounded-full h-2">
-                                <div class="bg-amber-500 h-2 rounded-full" style="width: 65%"></div>
-                            </div>
-                        </div>
-                    </div>
+
+                <div class="mt-6">
+                    <h3 class="text-sm font-semibold text-slate-700 mb-2">联系方式</h3>
+                    <div class="text-sm text-slate-600" id="pf-contact">邮箱: 未填写<br>电话: 未填写</div>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-sm font-semibold text-slate-700 mb-2">技能标签</h3>
+                    <div id="pf-skills" class="flex flex-wrap gap-2 text-xs"></div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl border border-slate-200 p-6">
-                <h2 class="text-lg font-semibold text-slate-900 mb-6">成长任务</h2>
-                <div class="space-y-4">
-                    <div class="flex items-center p-3 rounded-lg border border-slate-100 bg-slate-50/50">
-                        <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-4">
-                            <i data-lucide="check" class="w-4 h-4"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-sm font-medium text-slate-900">基本信息</h4>
-                            <p class="text-xs text-slate-500">10月12日 完成</p>
-                        </div>
-                        <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded">已完成</span>
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-900">个人简介</h3>
+                        <span class="text-xs text-slate-400">可以简短说明你的职业方向与期望</span>
                     </div>
+                    <p id="pf-bio" class="text-sm text-slate-700">暂无个人简介。点击编辑添加。</p>
+                </div>
 
-                    <div class="flex items-center p-3 rounded-lg border border-slate-100 bg-white shadow-sm">
-                        <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center mr-4">
-                            <i data-lucide="file-text" class="w-4 h-4"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-sm font-medium text-slate-900">上传简历</h4>
-                            <p class="text-xs text-slate-500">投递职位的必要条件</p>
-                        </div>
-                        <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-1 rounded">待完成</span>
+                <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-900">工作经验</h3>
+                        <button id="addExp" class="text-sm text-blue-600">添加</button>
                     </div>
+                    <div id="pf-exps" class="space-y-4 text-sm text-slate-700">
+                        <div class="p-3 border rounded-lg bg-slate-50">
+                            <div class="flex justify-between"><div><strong>前端实习生</strong><div class="text-xs text-slate-500">某互联网公司 · 2023.06 - 2023.12</div></div><div class="text-xs text-slate-500">杭州</div></div>
+                            <p class="mt-2 text-xs text-slate-600">负责页面组件开发与性能优化，参与多人协作项目。</p>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="flex items-center p-3 rounded-lg border border-slate-100 bg-white shadow-sm">
-                        <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center mr-4">
-                            <i data-lucide="award" class="w-4 h-4"></i>
+                <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                    <h3 class="text-lg font-semibold text-slate-900 mb-3">期望职位 / 简历</h3>
+                    <div class="flex items-center gap-4">
+                        <div class="flex-1 text-sm text-slate-700" id="pf-wish">期望：前端开发 / 全栈（可远程）</div>
+                        <div>
+                            <button id="pf-download" class="px-3 py-1 bg-blue-600 text-white rounded-lg text-sm">下载简历</button>
                         </div>
-                        <div class="flex-1">
-                            <h4 class="text-sm font-medium text-slate-900">技能测试</h4>
-                            <p class="text-xs text-slate-500">验证你的 Python 技能水平</p>
-                        </div>
-                        <button class="text-xs font-semibold text-blue-600 hover:bg-blue-50 px-3 py-1 rounded border border-blue-100 transition-colors">开始</button>
                     </div>
                 </div>
             </div>
@@ -106,17 +88,61 @@
     <script>
         lucide.createIcons();
         (function(){
-            // Allow persistent login from localStorage
+            // Restore persistent login
             if(localStorage.getItem('uni_auth')==='true'){
                 sessionStorage.setItem('uni_auth','true');
                 sessionStorage.setItem('uni_user', localStorage.getItem('uni_user'));
             }
-            // If not authenticated, redirect to login page
             if(sessionStorage.getItem('uni_auth')!=='true'){
                 location.href = 'login.html';
                 return;
             }
 
+            // Load profile data from localStorage
+            const user = sessionStorage.getItem('uni_user') || localStorage.getItem('uni_user') || '用户';
+            const data = JSON.parse(localStorage.getItem('profile_data') || '{}');
+
+            // Elements
+            const pfName = document.getElementById('pf-name');
+            const pfAvatar = document.getElementById('pf-avatar');
+            const pfTitle = document.getElementById('pf-title');
+            const pfLocation = document.getElementById('pf-location');
+            const pfAvailability = document.getElementById('pf-availability');
+            const pfContact = document.getElementById('pf-contact');
+            const pfSkills = document.getElementById('pf-skills');
+            const pfBio = document.getElementById('pf-bio');
+            const pfExps = document.getElementById('pf-exps');
+            const pfWish = document.getElementById('pf-wish');
+
+            pfName.textContent = data.name || user;
+            if(data.avatar) pfAvatar.src = data.avatar;
+            pfTitle.textContent = data.title || '求职中 · 前端工程师';
+            pfLocation.textContent = data.location || '未填写';
+            pfAvailability.textContent = data.availability || '随时到岗';
+            pfContact.innerHTML = (data.email?('邮箱: '+data.email):'邮箱: 未填写')+ '<br>' + (data.phone?('电话: '+data.phone):'电话: 未填写');
+            pfBio.textContent = data.bio || '暂无个人简介。点击编辑添加。';
+            pfWish.textContent = data.wish || '期望：前端开发 / 全栈（可远程）';
+
+            // render skills
+            (data.skills || ['HTML','CSS','JavaScript']).forEach(s=>{
+                const el = document.createElement('span');
+                el.className = 'px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded';
+                el.textContent = s;
+                pfSkills.appendChild(el);
+            });
+
+            // simple exp list rendering if any
+            if(Array.isArray(data.exps)){
+                pfExps.innerHTML = '';
+                data.exps.forEach(e=>{
+                    const d = document.createElement('div');
+                    d.className = 'p-3 border rounded-lg bg-slate-50';
+                    d.innerHTML = '<div class="flex justify-between"><div><strong>'+ (e.title || '') +'</strong><div class="text-xs text-slate-500">'+ (e.company||'') +' · '+ (e.range||'') +'</div></div><div class="text-xs text-slate-500">'+ (e.location||'') +'</div></div><p class="mt-2 text-xs text-slate-600">'+ (e.desc||'') +'</p>';
+                    pfExps.appendChild(d);
+                });
+            }
+
+            // logout
             const logoutBtn = document.getElementById('logoutBtn');
             logoutBtn.addEventListener('click', function(){
                 sessionStorage.removeItem('uni_auth');
@@ -125,6 +151,52 @@
                 localStorage.removeItem('uni_user');
                 location.href = 'login.html';
             });
+
+            // Edit profile (simple prompt-based edits for demo)
+            document.getElementById('pf-edit').addEventListener('click', function(){
+                const name = prompt('姓名：', data.name || user) || data.name || user;
+                const title = prompt('头衔/求职方向：', data.title || '') || data.title || '';
+                const email = prompt('邮箱：', data.email || '') || data.email || '';
+                const phone = prompt('电话：', data.phone || '') || data.phone || '';
+                const bio = prompt('个人简介：', data.bio || '') || data.bio || '';
+                const skills = prompt('技能（用逗号分隔）：', (data.skills||[]).join(',')) || (data.skills||[]).join(',');
+                data.name = name; data.title = title; data.email = email; data.phone = phone; data.bio = bio; data.skills = skills.split(',').map(s=>s.trim()).filter(Boolean);
+                localStorage.setItem('profile_data', JSON.stringify(data));
+                location.reload();
+            });
+
+            // Upload avatar (store as data URL)
+            document.getElementById('pf-upload').addEventListener('change', function(e){
+                const f = e.target.files && e.target.files[0];
+                if(!f) return;
+                const r = new FileReader();
+                r.onload = function(){
+                    data.avatar = r.result;
+                    localStorage.setItem('profile_data', JSON.stringify(data));
+                    pfAvatar.src = r.result;
+                };
+                r.readAsDataURL(f);
+            });
+
+            // download resume placeholder
+            document.getElementById('pf-download').addEventListener('click', function(){
+                alert('这是演示下载（未上传简历）。可在编辑中添加简历链接或上传功能。');
+            });
+
+            // add experience quick prompt
+            document.getElementById('addExp').addEventListener('click', function(){
+                const title = prompt('职位：','')||'';
+                if(!title) return;
+                const company = prompt('公司：','')||'';
+                const range = prompt('时间范围：','')||'';
+                const location = prompt('地点：','')||'';
+                const desc = prompt('描述：','')||'';
+                data.exps = data.exps||[];
+                data.exps.unshift({title,company,range,location,desc});
+                localStorage.setItem('profile_data', JSON.stringify(data));
+                location.reload();
+            });
+
         })();
     </script>
 </body>

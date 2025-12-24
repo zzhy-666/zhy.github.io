@@ -184,12 +184,8 @@
                                 <span class="text-blue-600">本周你的职场竞争力提升了</span> <span class="text-blue-600 font-medium">12%</span>。<span class="text-blue-600">根据你的技能缺口，查看为你推荐的新课程。</span>
                             </p>
                             <div class="flex gap-3">
-                                <button class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-lg shadow-blue-600/20">
-                                    开始测评
-                                </button>
-                                <button class="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">
-                                    查看报告
-                                </button>
+                                <a href="assessments.html" class="auth-required inline-block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-lg shadow-blue-600/20">开始测评</a>
+                                <a href="assessments.html#report" class="auth-required inline-block bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">查看报告</a>
                             </div>
                         </div>
                         <!-- Abstract Illustration Background -->
@@ -1733,9 +1729,25 @@
         // update profile link, and redirect unauthenticated clicks to login.
         (function(){
             // sync persistent login
+            // 如果存在第三方模拟的 userInfo，将其转换为现有的 uni_auth/uni_user 以兼容老逻辑
+            try{
+                const uiRaw = localStorage.getItem('userInfo');
+                const lm = localStorage.getItem('login_method') || sessionStorage.getItem('login_method');
+                // 仅当登录方式为 QQ 时，将 userInfo 的 name 同步为 uni_user
+                if(uiRaw && lm === 'qq'){
+                    const ui = JSON.parse(uiRaw);
+                    if(ui && ui.name){
+                        localStorage.setItem('uni_user', ui.name);
+                        localStorage.setItem('uni_auth', 'true');
+                    }
+                }
+            }catch(e){ /* ignore malformed */ }
             if(localStorage.getItem('uni_auth')==='true'){
                 sessionStorage.setItem('uni_auth','true');
                 sessionStorage.setItem('uni_user', localStorage.getItem('uni_user'));
+                // ensure login_method propagated
+                const lm = localStorage.getItem('login_method');
+                if(lm) sessionStorage.setItem('login_method', lm);
             }
 
 
@@ -1759,7 +1771,25 @@
             const topAvatar = document.getElementById('topUserAvatar');
             const greetName = document.getElementById('greetName');
             if(isAuth && topUserName){
-                const u = sessionStorage.getItem('uni_user') || localStorage.getItem('uni_user') || '用户';
+                const lm = sessionStorage.getItem('login_method') || localStorage.getItem('login_method');
+                let displayName = '用户';
+                if(lm === 'qq'){
+                    try{
+                        const ui = JSON.parse(localStorage.getItem('userInfo') || 'null');
+                        if(ui && ui.name) displayName = ui.name;
+                        // 优先使用 userInfo 的头像（如果可用）
+                        if(ui && ui.avatar){
+                            const av = ui.avatar.toString();
+                            if(av.startsWith('http') || av.startsWith('data:') || av.startsWith('./') || av.startsWith('/')){
+                                topAvatar.src = av;
+                            }
+                        }
+                    }catch(e){/* ignore */}
+                }
+                if(displayName === '用户'){
+                    displayName = sessionStorage.getItem('uni_user') || localStorage.getItem('uni_user') || '用户';
+                }
+                const u = displayName;
                 topUserName.textContent = u;
                 topUserName.href = 'profile.html';
                 topUserSub.textContent = '';
@@ -1770,6 +1800,16 @@
                 topUserName.href = 'login.html';
                 topUserSub.textContent = '';
                 if(greetName) greetName.textContent = '同学';
+            }
+
+            // Make the whole top user block clickable: avatar or name -> profile (if auth) or login
+            const topUserBlockEl = document.getElementById('topUserBlock');
+            if(topUserBlockEl){
+                topUserBlockEl.style.cursor = 'pointer';
+                topUserBlockEl.addEventListener('click', function(){
+                    const dest = sessionStorage.getItem('uni_auth')==='true' ? 'profile.html' : 'login.html';
+                    location.href = dest;
+                });
             }
 
             // Intercept clicks only on links that require auth (have 'auth-required' class)
