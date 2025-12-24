@@ -87,14 +87,14 @@
                 sessionStorage.setItem('uni_auth','true');
                 const storedUser = localStorage.getItem('uni_user') || '';
                 if(storedUser) sessionStorage.setItem('uni_user', storedUser);
-                const dest = returnTo ? decodeURIComponent(returnTo) : 'generated-page.html';
+                const dest = returnTo ? decodeURIComponent(returnTo) : 'index.html';
                 location.href = dest;
                 return;
             }
 
             // If session already active, redirect
             if(sessionStorage.getItem('uni_auth')==='true'){
-                const dest = returnTo ? decodeURIComponent(returnTo) : 'generated-page.html';
+                const dest = returnTo ? decodeURIComponent(returnTo) : 'index.html';
                 location.href = dest;
                 return;
             }
@@ -123,7 +123,7 @@
                         localStorage.setItem('uni_auth','true');
                         localStorage.setItem('uni_user', u);
                     }
-                    const dest = returnTo ? decodeURIComponent(returnTo) : 'generated-page.html';
+                    const dest = returnTo ? decodeURIComponent(returnTo) : 'index.html';
                     location.href = dest;
                 } else {
                     err.textContent = '账号或密码错误，请重试。';
