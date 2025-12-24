@@ -78,23 +78,32 @@
     <script>
         lucide.createIcons();
         (function(){
-            // support return redirect parameter
+            // support return redirect parameter and sanitize targets
             const params = new URLSearchParams(location.search);
             const returnTo = params.get('return');
+            function resolveReturn(rt){
+                try{
+                    const decoded = rt ? decodeURIComponent(rt) : '';
+                    if(!decoded) return 'index.html';
+                    // prevent redirect to removed/old pages
+                    if(decoded.includes('generated-page.html')) return 'index.html';
+                    return decoded;
+                }catch(e){ return 'index.html'; }
+            }
 
             // If persistent login stored, restore session and redirect back
             if(localStorage.getItem('uni_auth')==='true'){
                 sessionStorage.setItem('uni_auth','true');
                 const storedUser = localStorage.getItem('uni_user') || '';
                 if(storedUser) sessionStorage.setItem('uni_user', storedUser);
-                const dest = returnTo ? decodeURIComponent(returnTo) : 'index.html';
+                const dest = resolveReturn(returnTo);
                 location.href = dest;
                 return;
             }
 
             // If session already active, redirect
             if(sessionStorage.getItem('uni_auth')==='true'){
-                const dest = returnTo ? decodeURIComponent(returnTo) : 'index.html';
+                const dest = resolveReturn(returnTo);
                 location.href = dest;
                 return;
             }
@@ -123,7 +132,7 @@
                         localStorage.setItem('uni_auth','true');
                         localStorage.setItem('uni_user', u);
                     }
-                    const dest = returnTo ? decodeURIComponent(returnTo) : 'index.html';
+                    const dest = resolveReturn(returnTo);
                     location.href = dest;
                 } else {
                     err.textContent = '账号或密码错误，请重试。';
