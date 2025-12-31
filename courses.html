@@ -6,17 +6,14 @@
   <title>课程中心 - 大学生岗位胜任力提升平台</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/sidebar.css">
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen">
-  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
-    <h1 class="text-2xl font-semibold">课程中心</h1>
-    <div>
-      <a href="index.html" class="text-sm text-blue-600 hover:underline">返回主页</a>
-    </div>
-  </header>
-
   <main class="max-w-6xl mx-auto p-6">
-    <p class="text-sm text-slate-500 mb-4">点击课程进入学习界面。未登录时打开学习界面会被要求先登录。</p>
+    <a href="index.html" class="text-sm text-blue-600 hover:underline">← 返回主页</a>
+
+    <h1 class="text-2xl font-semibold mt-4">课程中心</h1>
+    <p class="text-sm text-slate-500 mt-1 mb-4">点击课程进入学习界面。未登录时打开学习界面会被要求先登录。</p>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
       <!-- Course list: each link goes to learning.html?id=N -->
@@ -52,5 +49,6 @@
   </main>
 
   <script>lucide.createIcons();</script>
+  <script src="assets/sidebar.js" defer></script>
 </body>
 </html>

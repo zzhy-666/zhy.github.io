@@ -1,0 +1,5 @@
+/* 侧边栏局部样式，使用 Tailwind 为主，仅做小调整 */
+.injected-scroll { padding: 1.5rem; }
+@media (max-width: 767px) {
+  aside[data-injected-sidebar] { display: none; }
+}
